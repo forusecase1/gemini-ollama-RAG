@@ -15,9 +15,13 @@ import os
 if "history" not in st.session_state:
     st.session_state.history = []
 
+app = Flask(__name__)
+
 load_dotenv()
 
-model_type= 'ollama'
+@app.route("/webhook", methods=['POST'])
+
+model_type= 'gemini'
 
 # Initializing Gemini
 if(model_type == "ollama"):
@@ -32,8 +36,10 @@ elif(model_type == "gemini"):
                                 temperature=0.1, 
                                 convert_system_message_to_human=True
                             )
-    
-genai.configure(api_key=os.environ["GOOGLE_API_KEY"])
+ine_bot_api = LineBotApi(os.getenv("LINE_CHANNEL_ACCESS_TOKEN"))
+line_handler = WebhookHandler(os.getenv("LINE_CHANNEL_SECRET"))
+working_status = os.getenv("DEFALUT_TALKING", default = "true").lower() == "true"    
+genai.configure(api_key=os.getenv["GOOGLE_API_KEY"])
 
 # Vector Database
 persist_directory = <PERSIST_DIR> # Persist directory path
