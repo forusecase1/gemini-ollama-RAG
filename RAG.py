@@ -42,7 +42,7 @@ working_status = os.getenv("DEFALUT_TALKING", default = "true").lower() == "true
 genai.configure(api_key=os.getenv["GOOGLE_API_KEY"])
 
 # Vector Database
-persist_directory = <PERSIST_DIR> # Persist directory path
+persist_directory = "./db/gemini" # Persist directory path
 embeddings = GoogleGenerativeAIEmbeddings(model="models/embedding-001")
 
 if not os.path.exists(persist_directory):
