@@ -3,7 +3,7 @@
   "builds": [
       {
           "src": "RAG.py",
-          "use": "@vercel/python -m streamlit run"
+          "use": "@vercel/python"
       }
   ],
   "routes": [
